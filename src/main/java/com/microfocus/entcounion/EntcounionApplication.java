@@ -1,0 +1,12 @@
+package com.microfocus.entcounion;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EntcounionApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(EntcounionApplication.class, args);
+    }
+}
