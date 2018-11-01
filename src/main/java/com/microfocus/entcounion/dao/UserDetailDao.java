@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 @Component
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDetailDao extends JpaRepository<User, Long> {
 
     <S extends User> Optional<User>  saveAndFlush(UserDetails userDetails);
 

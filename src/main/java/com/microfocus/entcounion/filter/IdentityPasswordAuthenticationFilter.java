@@ -14,10 +14,6 @@ import java.io.IOException;
 
 @Slf4j
 public class IdentityPasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-    public IdentityPasswordAuthenticationFilter() {
-        super(new AntPathRequestMatcher("/login", "POST"));
-
-    }
 
     protected IdentityPasswordAuthenticationFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
