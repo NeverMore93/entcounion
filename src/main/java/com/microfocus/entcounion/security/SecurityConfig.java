@@ -29,21 +29,27 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 import javax.annotation.Resource;
+import javax.servlet.Filter;
+import javax.sql.DataSource;
 
-@EnableGlobalAuthentication
+//@EnableGlobalAuthentication
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource(name ="userService" )
     private UserService userService;
 
+    @Resource(name = "springSecurityFilterChain")
+    private Filter springSecurityFilterChain;
+
     private UsernamePasswordAuthenticationFilter usernamePasswordAuthenticationFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().antMatchers("/hello","/login").permitAll();
+//        http.addFilter(springSecurityFilterChain);
         http.addFilter(usernamePasswordAuthenticationFilter);
-        http.authorizeRequests().antMatchers("/hello").permitAll();
+//        http.authorizeRequests().antMatchers("/hello").permitAll();
 
     }
 

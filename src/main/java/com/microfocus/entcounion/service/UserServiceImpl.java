@@ -1,7 +1,6 @@
 package com.microfocus.entcounion.service;
 
-import com.microfocus.entcounion.dao.UserDetailDao;
-import com.microfocus.entcounion.entity.User;
+import com.microfocus.entcounion.dao.UserDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,12 +13,12 @@ import javax.annotation.Resource;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    @Resource(name = "userDetailDao")
-    private UserDetailDao userDetailDao;
+    @Resource(name = "userDao")
+    private UserDao userDao;
 
     @Override
     public void createUser(UserDetails user) {
-        userDetailDao.saveAndFlush(user);
+        userDao.saveAndFlush(user);
     }
 
     @Override
@@ -44,6 +43,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userDetailDao.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User:"+username+" not found!"));
+        return userDao.findUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User:"+username+" not found!"));
     }
 }
